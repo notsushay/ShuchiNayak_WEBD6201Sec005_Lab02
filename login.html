@@ -41,16 +41,34 @@
           </nav>
     </header>
 
-    <div class="container">
-        <h1>Welcome to Our Site</h1>
-        <a href="login.html">
-          Click here to access login.html          
-        </a>
-      </br>
-        <a href="register.html">
-          Click here to access register.html          
-        </a>
-    </div>
+    <main class="container">
+        <h1>Login Page</h1>
+
+    </br>
+        <div class="row justify-content-lg-left g-3">
+            <form class="col-lg-6 col-md-10 col-sm-10">
+  
+              <div class="input-group mb-3">
+                <span class="input-group-text">Username</span>
+                <input id="username" name="username" type="text" class="form-control"
+                placeholder="Enter username here" 
+                aria-label="Username" aria-describedby="Username Input" required>
+              </div>
+  
+              <div class="input-group mb-3">
+                <span class="input-group-text">Password</span>
+                <input id="password" name="password" type="password" class="form-control" 
+                placeholder="Enter password here" 
+                aria-label="Password" aria-describedby="Password Input" required>
+              </div>
+
+              <button id="loginButton" type="submit" class="btn btn-primary"> Login</button>
+            </form>
+        </div>
+    </main>
+    
+    
+    
     
     
     <!--Scripting Section-->

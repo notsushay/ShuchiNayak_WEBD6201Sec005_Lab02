@@ -40,17 +40,51 @@
             </div>
           </nav>
     </header>
+    
+    <main class="container">
+        <h1>Register Page</h1>
+    </br>
 
-    <div class="container">
-        <h1>Welcome to Our Site</h1>
-        <a href="login.html">
-          Click here to access login.html          
-        </a>
-      </br>
-        <a href="register.html">
-          Click here to access register.html          
-        </a>
-    </div>
+        <div class="row justify-content-lg-left g-3">
+            <form class="col-lg-6 col-md-10 col-sm-10">
+  
+              <div class="input-group mb-3">
+                <input id="firstName" name="firstName" type="text" class="form-control" 
+                placeholder="Enter First Name"
+                aria-label="First Name" aria-describedby="First Name Input" required>
+              </div>
+
+              <div class="input-group mb-3">
+                <input id="lastName" name="lastName" type="text" class="form-control" 
+                placeholder="Enter Last Name"
+                aria-label="Last Name" aria-describedby="Last Name Input" required>
+              </div>
+  
+              <div class="input-group mb-3">
+                <input id="emailAddress" name="emailAddress" type="email" class="form-control" 
+                placeholder="Enter Email" 
+                aria-label="Email Address" aria-describedby="Email Address Input" required>
+              </div>
+  
+              <div class="input-group mb-3">
+                <input id="password" name="password" type="password" class="form-control" 
+                placeholder="Enter Password" 
+                aria-label="Password" aria-describedby="Password Input" required>
+              </div>
+
+              <div class="input-group mb-3">
+                <input id="confirmPassword" name="confirmPassword" type="password" class="form-control" 
+                placeholder="Re-enter Password" 
+                aria-label="Confirm Password" aria-describedby="Confirm Password Input" required>
+              </div>  
+              
+              <button id="registerButton" type="submit" class="btn btn-primary"> Register</button>
+            </form>
+
+          </div>
+    </main>
+
+    
     
     
     <!--Scripting Section-->
