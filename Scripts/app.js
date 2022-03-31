@@ -17,12 +17,12 @@
       //get parent by id
       let textArea = document.getElementById("mainContent");
       //assigning h1 element to h1 variable
-      let h4 = document.createElement("h6");
+      let h6 = document.createElement('h6');
       //welcome message
-      h4.textContent = "This page serves as the home page for WEBD 6201 - Lab Assignment 1.";
+      h6.textContent = "This page serves as the home page for WEBD 6201 - Lab Assignment 1.";
 
       //append the new node to the parent mainContent div
-      textArea.appendChild(h4);  
+      $("#mainContent").append(h6);  
 
     }
 
@@ -105,14 +105,14 @@
     function DisplayHeader()
     {
         //get parent by id
-        let headingArea = document.getElementById("contentArea");
+        
         //assigning h1 element to h1 variable
         let h1 = document.createElement("h1");
         //welcome message
         h1.textContent = "Welcome to the " + document.title + " page";
 
         //append the new node to the parent mainContent div
-        headingArea.appendChild(h1);  
+        $("#contentArea").append(h1);
     }
 
     /*****************
@@ -152,6 +152,89 @@
          parentNode.insertBefore(hRTab, parentNode.lastElementChild);
      } */
 
+     /**
+     * This method validates an input text field in the form and displays
+     * an error in the message area
+     * @param {string} input_field_ID
+     * @param {string} error_message
+     */
+   function ValidateName(input_field_ID, error_message)
+   {
+       let messageArea = $("#errorMessage").hide();
+       
+       $("#" + input_field_ID).on("blur", function()
+       {
+           let inputFieldText = $(this).val();
+
+           if(inputFieldText.length < 2)
+           {
+               $(this).trigger("focus").trigger("select"); 
+               messageArea.addClass("alert alert-danger").text(error_message).show(); 
+           }
+           else
+           {
+               messageArea.removeAttr("class").hide();
+           }
+       });
+   }
+   
+   function ValidateEmail(input_field_ID, error_message1, error_message2)
+   {
+       let messageArea = $("#errorMessage").hide();
+       
+       $("#" + input_field_ID).on("blur", function()
+       {
+           let inputFieldText = $(this).val();
+           let emailCheck = /^[_a-zA-Z0-9\\-]+(\.[_a-zA-Z0-9\\-]+)*@[a-zA-Z0-9\\-]+(\.[a-zA-Z0-9\\-]+)*(\.[a-z]{2,6})$/;
+           
+           if(!emailCheck.test(inputFieldText))
+           {
+               $(this).trigger("focus").trigger("select"); 
+               messageArea.addClass("alert alert-danger").text(error_message1).show(); 
+           }
+           else if(inputFieldText.length < 8)
+           {
+                $(this).trigger("focus").trigger("select"); 
+                messageArea.addClass("alert alert-danger").text(error_message2).show(); 
+        
+           }
+           else
+           {
+               messageArea.removeAttr("class").hide();
+           }
+       });
+   }
+
+   function ValidatePassword(input_field_ID1, input_field_ID2, error_message1, error_message2)
+   {
+        let messageArea = $("#errorMessage").hide();
+            
+        $("#" + input_field_ID2).on("blur", function()
+        {
+            let passwordText = $("#" + input_field_ID1).val(); 
+            let passwordConfirmText = $(this).val();
+
+            console.log(passwordText);
+            console.log(passwordConfirmText);
+           
+            if(passwordText != passwordConfirmText)
+            {
+                $(this).on("focus").on("select"); 
+                messageArea.addClass("alert alert-danger").text(error_message1).show(); 
+            }
+            else if(passwordText.length < 6)
+            {
+                    $(this).on("focus").on("select"); 
+                    messageArea.addClass("alert alert-danger").text(error_message2).show(); 
+            
+            }
+            else
+            {
+                messageArea.removeAttr("class").hide();
+            } 
+        });
+   }
+
     function DisplayLoginPage()
     {   
         console.log("Login Page");
@@ -160,6 +243,10 @@
     function DisplayRegisterPage()
     {
         console.log("Register Page");
+        ValidateName("firstName", "Please enter a valid First Name. Name should at least be 2 characters in length.");
+        ValidateName("lastName", "Please enter a valid Last Name. Name should at least be 2 characters in length.");
+        ValidateEmail("emailAddress", "Email must contain @ symbol.", "Email should at least be 8 characters in length.");
+        ValidatePassword("password", "confirmPassword", "Passwords do not match.", "Password must be at least 6 characters in length.");
     }
 
     //Determine the page being displayed and inject text accordingly
@@ -182,10 +269,10 @@
           case "Contact Us":
             DisplayContactPage();
             break;
-          case "Login":
+          case "Login Page":
             DisplayLoginPage();
             break;
-          case "Register":
+          case "Register Page":
             DisplayRegisterPage();
             break;
         }
