@@ -238,6 +238,24 @@
     function DisplayLoginPage()
     {   
         console.log("Login Page");
+        $("#loginButton").on("click", (event) =>
+        {
+            let name = $("#username").val();
+            event.preventDefault();
+            
+             //get reference to the entry point
+            let parentNode = document.getElementsByClassName("navbar-nav")[0];
+            //create element to be inserted
+            let username = document.createElement('li');
+            //modify element
+            username.className = "navbar-text";
+            username.innerHTML = name;
+            //insert element
+            parentNode.insertBefore(username, parentNode.lastElementChild);
+            // let parent = $(".navbar-nav ms-auto mb-2 mb-lg-0");
+            // parent.append('<nav class="navbar navbar-light bg-light"><span class="navbar-text">Navbar text with an inline element</span></nav>');
+    
+        });
     }
 
     function DisplayRegisterPage()
@@ -247,6 +265,20 @@
         ValidateName("lastName", "Please enter a valid Last Name. Name should at least be 2 characters in length.");
         ValidateEmail("emailAddress", "Email must contain @ symbol.", "Email should at least be 8 characters in length.");
         ValidatePassword("password", "confirmPassword", "Passwords do not match.", "Password must be at least 6 characters in length.");
+        
+        $("#registerButton").on("click", (event) =>
+                    {
+                        event.preventDefault();
+                        //Add User
+                        let user = new User(firstName.value, lastName.value, firstName.value + lastName.value, emailAddress.value, password.value);
+                                
+                        //display user on console
+                        console.log(user.toString());
+
+                        //clear the form
+                        document.getElementById("registerForm").reset();                   
+
+                    });
     }
 
     //Determine the page being displayed and inject text accordingly
