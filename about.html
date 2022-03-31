@@ -40,10 +40,40 @@
             </div>
           </nav>
     </header>
-
-    <div class="container">
-        <h1>About Us</h1>
-    </div>
+    <!--Main Content-->
+    <main class="container" id="mainContent">
+      <div class="row">
+          <div class="col">
+              <div class="container-fluid text-sm-center p-5 bg-light" id="contentArea">
+                <!--H1 Welcome message injected through javascript-->
+              </div>
+          </div>
+      </div>
+      <!--A Card Component - from Bootstrap-->
+      <div class="card mt-5 mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <!--Image of site creator-->
+            <img src="./images/about-img.JPG" class="img-fluid rounded-start" alt="author-img">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">              
+              <!--Text injected through JS-->
+              <h5 class="card-title"></h5>
+              <p class="card-text"></p>
+              <p class="card-text"></p>
+              <!--Link to Resume-->
+              <p class="card-text"><small class="text-muted">
+                <a href = "https://docs.google.com/document/d/1lge4iHrZ9Uazv5fOFJR8f2O9iY8jDWtb/edit?usp=sharing&ouid=111898911981135910438&rtpof=true&sd=true">
+                  A link to Shuchi's Resume
+                </a>
+              </small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </main>
     
     <!--Scripting Section-->
     <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
